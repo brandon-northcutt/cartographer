@@ -23,6 +23,7 @@ StreamFileWriter::StreamFileWriter(const string &filename) : out_(filename, std:
 StreamFileWriter::~StreamFileWriter() {}
 
 bool StreamFileWriter::Write(const char *const data, const size_t len) {
+  //TODO(brandon-northcutt) stop listening to sensor data, finish all trajectories, and wait for final optimization, use this container to traverse Cartographer's memory structures and serialize them appropriately.
   if (out_.bad()) {
     return false;
   }
