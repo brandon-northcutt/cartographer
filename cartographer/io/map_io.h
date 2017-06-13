@@ -25,6 +25,7 @@ namespace io {
 // A class to serialize and deserialize the Cartographer state.
 class MapIO {
 public:
+  MapIO(cartographer::mapping::MapBuilder & map_builder);
   MapIO(const MapIO &) = delete;
   MapIO &operator=(const MapIO &) = delete;
   // TODO(brandon-northcutt) write each trajectory out in the smallest

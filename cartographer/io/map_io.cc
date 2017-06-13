@@ -18,35 +18,15 @@
 
 namespace cartographer {
 namespace io {
-
-StreamFileWriter::StreamFileWriter(const string &filename) : out_(filename, std::ios::out | std::ios::binary) {}
-StreamFileWriter::~StreamFileWriter() {}
-
-bool StreamFileWriter::Write(const char *const data, const size_t len) {
-  //TODO(brandon-northcutt) stop listening to sensor data, finish all trajectories, and wait for final optimization, use this container to traverse Cartographer's memory structures and serialize them appropriately.
-  if (out_.bad()) {
-    return false;
-  }
-  out_.write(data, len);
-  return !out_.bad();
-}
-
-bool StreamFileWriter::Close() {
-  if (out_.bad()) {
-    return false;
-  }
-  out_.close();
-  return !out_.bad();
-}
-
-bool StreamFileWriter::WriteHeader(const char *const data, const size_t len) {
-  if (out_.bad()) {
-    return false;
-  }
-  out_.flush();
-  out_.seekp(0);
-  return Write(data, len);
-}
-
+  //constructor takes a pointer to the map_builder
+  MapIO::MapIO(cartographer::mapping::MapBuilder & map_builder);
+  //TODO(brandon-northcutt) finish all trajectories (close or suspend sensor
+  //input streams)
+  //TODO(brandon-northcutt) wait for final optimization (all worker threads
+  //joined and flags set for trajectories finalized)
+  //TODO(brandon-northcutt) get a file handle and use filestreamwirtter to send
+  //protobufs to it.
+  //TODO(send mapbuilderoptions protobuf)
+  //use this container to traverse Cartographer's memory structures and serialize them appropriately.
 } // namespace io
 } // namespace cartographer
