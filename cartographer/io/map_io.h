@@ -17,6 +17,7 @@
 #ifndef CARTOGRAPHER_IO_MAPPING_IO_H_
 #define CARTOGRAPHER_IO_MAPPING_IO_H_
 
+#include "cartographer/mapping/map_builder.h"
 #include "cartographer/io/file_writer.h"//Re-used filestream wrapper.
 
 namespace cartographer {

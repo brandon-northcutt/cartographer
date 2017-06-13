@@ -52,7 +52,7 @@ import "cartographer/transform/proto/transform.proto";
 
 message MapIO {
   oneof union {
-    Transform transform = 1;
-    CeresSolverOptions ceres_solver_options = 2;
+      MapBuilderOptions map_builder_options = 1;
+      TrajectoryBuilderOptions trajectory_builder_options = 2;
   }
 }

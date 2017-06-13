@@ -19,7 +19,9 @@
 namespace cartographer {
 namespace io {
   //constructor takes a pointer to the map_builder
-  MapIO::MapIO(cartographer::mapping::MapBuilder & map_builder);
+  cartographer::io::MapIO::MapIO(cartographer::mapping::MapBuilder & map_builder){
+    std::cout << "There are " << map_builder.num_trajectory_builders() << std::endl;
+  };
   //TODO(brandon-northcutt) finish all trajectories (close or suspend sensor
   //input streams)
   //TODO(brandon-northcutt) wait for final optimization (all worker threads
