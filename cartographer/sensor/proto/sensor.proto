@@ -40,3 +40,10 @@ message RangeData {
   optional PointCloud point_cloud = 2;
   optional PointCloud missing_echo_point_cloud = 3;
 }
+
+// Proto representation of ::cartographer::sensor::CompressedRangeData
+message CompressedRangeData {
+  optional transform.proto.Vector3f origin = 1;
+  optional CompressedPointCloud point_cloud = 2;
+  optional CompressedPointCloud missing_echo_point_cloud = 3;
+}
