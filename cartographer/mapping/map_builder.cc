@@ -138,5 +138,7 @@ int MapBuilder::num_trajectory_builders() const {
 
 SparsePoseGraph* MapBuilder::sparse_pose_graph() { return sparse_pose_graph_; }
 
+bool MapBuilder::SerializeState(io::ProtoStreamWriter* writer) {}
+
 }  // namespace mapping
 }  // namespace cartographer

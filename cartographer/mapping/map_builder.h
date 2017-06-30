@@ -17,16 +17,10 @@
 #ifndef CARTOGRAPHER_MAPPING_MAP_BUILDER_H_
 #define CARTOGRAPHER_MAPPING_MAP_BUILDER_H_
 
-#include <memory>
-#include <string>
-#include <unordered_map>
-#include <unordered_set>
-#include <vector>
-
-#include "Eigen/Geometry"
 #include "cartographer/common/lua_parameter_dictionary.h"
 #include "cartographer/common/port.h"
 #include "cartographer/common/thread_pool.h"
+#include "cartographer/io/proto/map_io.pb.h"
 #include "cartographer/mapping/id.h"
 #include "cartographer/mapping/proto/map_builder_options.pb.h"
 #include "cartographer/mapping/proto/submap_visualization.pb.h"
@@ -37,6 +31,14 @@
 #include "cartographer/mapping_2d/sparse_pose_graph.h"
 #include "cartographer/mapping_3d/sparse_pose_graph.h"
 #include "cartographer/sensor/collator.h"
+
+#include <memory>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
+
+#include "Eigen/Geometry"
 
 namespace cartographer {
 namespace mapping {
@@ -80,6 +82,8 @@ class MapBuilder {
   int num_trajectory_builders() const;
 
   mapping::SparsePoseGraph* sparse_pose_graph();
+
+  bool MapBuilder::SerializeState(io::ProtoStreamWriter* writer);
 
  private:
   const proto::MapBuilderOptions options_;
