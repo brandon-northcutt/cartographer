@@ -16,13 +16,22 @@ syntax = "proto2";
 
 package cartographer.mapping.proto;
 
-import "cartographer/mapping/proto/scan.proto";
-import "cartographer/mapping/proto/sparse_pose_graph.proto";
-import "cartographer/mapping/proto/submaps.proto";
+option java_outer_classname = "Mapping";
+
 import "cartographer/sensor/proto/sensor.proto";
 
-message MapIO {
-  required mapping.proto.SparsePoseGraph sparse_pose_graph = 1;
-  repeated mapping.proto.Submaps submaps = 2;
-  repeated mapping.proto.Scan scans = 3;
+message ScanId {
+  required int32 trajectory_id = 1;
+  required int32 trajectory_node_index = 2;
+}
+
+message Scan {
+  enum Type {
+    TWO_D = 1;
+    THREE_D = 2;
+  }
+  required Type type = 1;
+  required ScanId scan_id = 2;
+  optional sensor.proto.RangeData range_data = 3;
+  optional sensor.proto.CompressedRangeData compressed_range_data = 4;
 }
